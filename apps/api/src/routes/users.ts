@@ -161,9 +161,9 @@ routeUserValidated.delete(
 
 // ❌ UNCOMMENT ini untuk test - akan throw error saat startup:
 // "PATCH is not allowed for route /users/:id"
-routeUserValidated.patch('/:id', (c) => {
-  return c.json({ error: 'Not allowed' })
-})
+// routeUserValidated.patch('/:id', (c) => {
+//   return c.json({ error: 'Not allowed' })
+// })
 
 // ❌ UNCOMMENT ini untuk test - akan throw error saat startup:
 // "Route /users/profile is not defined in API contract"
@@ -171,4 +171,4 @@ routeUserValidated.patch('/:id', (c) => {
 //   return c.json({ error: 'Not allowed' })
 // })
 
-export { userRoutes }
+export { userRoutes, validator }

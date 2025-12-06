@@ -28,7 +28,6 @@ let posts: Post[] = [
 
 let nextId = 3
 
-// GET /posts
 postRoutesValidated.get('/', (c) => {
   const response: PostsResponse = {
     success: true,
@@ -37,7 +36,6 @@ postRoutesValidated.get('/', (c) => {
   return c.json(response)
 })
 
-// GET /posts/:id
 postRoutesValidated.get(
   '/:id',
   zValidator('param', postIdParamSchema),
@@ -61,7 +59,6 @@ postRoutesValidated.get(
   }
 )
 
-// POST /posts
 postRoutesValidated.post(
   '/',
   zValidator('json', createPostSchema),
@@ -84,7 +81,6 @@ postRoutesValidated.post(
   }
 )
 
-// PUT /posts/:id
 postRoutesValidated.put(
   '/:id',
   zValidator('param', postIdParamSchema),
@@ -120,7 +116,6 @@ postRoutesValidated.put(
   }
 )
 
-// DELETE /posts/:id
 postRoutesValidated.delete(
   '/:id',
   zValidator('param', postIdParamSchema),
