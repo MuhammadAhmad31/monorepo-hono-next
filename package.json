@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-hono-next",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter='*' dev",
+    "dev:api": "bun run --filter=api dev",
+    "dev:web": "bun run --filter=web dev",
+    "build": "bun run --filter='*' build",
+    "clean": "rm -rf node_modules bun.lock",
+    "validate:api": "cd apps/api && bun run validate",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.3.3",
+    "husky": "^8.0.3"
+  },
+  "dependencies": {
+    "hono": "^4.10.7"
+  }
+}
