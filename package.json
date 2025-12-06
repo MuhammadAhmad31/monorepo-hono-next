@@ -16,9 +16,10 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/bun": "latest",
-    "typescript": "^5.3.3",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "typescript": "^5.3.3"
   },
   "dependencies": {
     "hono": "^4.10.7"
