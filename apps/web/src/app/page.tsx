@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import type { User, Post } from 'shared'
 import { createUserSchema, createPostSchema } from 'shared'
-import { api, handleApiError } from '../lib/api'
+import { api, handleApiError } from '@/lib/api'
 
 export default function Home() {
   const [users, setUsers] = useState<User[]>([])
