@@ -404,7 +404,7 @@ function PostCard({ post, users, onDelete }: { post: Post; users: User[]; onDele
               onDelete(post.id)
             }
           }}
-          className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition text-xs flex-shrink-0"
+          className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition text-xs shrink-0"
         >
           Delete
         </button>
