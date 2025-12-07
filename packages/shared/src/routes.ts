@@ -3,8 +3,8 @@
  * This file rarely needs changes - all route definitions in routes/ folder
  */
 
-import type { AllClientRoutes, AllApiRoutes } from './routes/index.routes'
-import { ALL_CONTRACTS } from './routes/index.routes'
+import type { AllClientRoutes, AllApiRoutes } from './contracts'
+import { ALL_CONTRACTS } from './contracts'
 
 // ============================================
 // Client-side types (untuk hono/client)
@@ -35,4 +35,4 @@ type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 export const API_CONTRACT: Record<ValidRoute, readonly HTTPMethod[]> = ALL_CONTRACTS
 
 // Re-export all route types for convenience
-export * from './routes/index.routes'
+export * from './contracts'
