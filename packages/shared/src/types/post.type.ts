@@ -1,28 +1,32 @@
+import { ApiResponse, PaginatedResponse } from "./api-response.types"
+
 export interface Post {
-  id: number
+  id: string
   title: string
   content: string
-  userId: number
+  published: boolean
+  userId: string
   createdAt: string
+  updatedAt: string
+  user?: {
+    id: string
+    name: string
+    email: string
+  }
 }
 
-export type CreatePostInput = {
+export interface CreatePostInput {
   title: string
   content: string
-  userId: number
+  published?: boolean
+  userId: string
 }
 
-export type UpdatePostInput = {
+export interface UpdatePostInput {
   title?: string
   content?: string
-  userId?: number
+  published?: boolean
 }
-
-export type PostsResponse = 
-  | { success: true; posts: Post[] }
-  | { success: false; error: string }
-
-
-export type PostResponse = 
-  | { success: true; post: Post }
-  | { success: false; error: string }
+export type PostsResponse = ApiResponse<Post[]>
+export type PostResponse = ApiResponse<Post>
+export type PaginatedPostsResponse = PaginatedResponse<Post>

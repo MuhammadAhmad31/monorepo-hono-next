@@ -8,7 +8,7 @@ export function usersApi(client: HonoApiClient) {
       return res.json() as Promise<UsersResponse>
     },
     
-    getById: async (id: number): Promise<UserResponse> => {
+    getById: async (id: string): Promise<UserResponse> => {
       const res = await client.api.users[':id'].$get({ 
         param: { id: id.toString() } 
       })
@@ -20,7 +20,7 @@ export function usersApi(client: HonoApiClient) {
       return res.json() as Promise<UserResponse>
     },
     
-    update: async (id: number, data: UpdateUserInput): Promise<UserResponse> => {
+    update: async (id: string, data: UpdateUserInput): Promise<UserResponse> => {
       const res = await client.api.users[':id'].$put({ 
         param: { id: id.toString() },
         json: data
@@ -28,7 +28,7 @@ export function usersApi(client: HonoApiClient) {
       return res.json() as Promise<UserResponse>
     },
     
-    delete: async (id: number): Promise<UserResponse> => {
+    delete: async (id: string): Promise<UserResponse> => {
       const res = await client.api.users[':id'].$delete({ 
         param: { id: id.toString() } 
       })

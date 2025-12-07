@@ -1,5 +1,5 @@
 import type { Hono } from 'hono'
-import type { ValidRoute, ValidMethod } from './routes'
+import type { ValidRoute } from './routes'
 import { API_CONTRACT } from './routes'
 
 type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'

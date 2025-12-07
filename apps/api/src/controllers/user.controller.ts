@@ -1,0 +1,39 @@
+import type { Context } from 'hono'
+import type { CreateUserInput, UpdateUserInput } from 'shared'
+import { userService } from '../services/user.service'
+import { asyncHandler } from '../middlewares/error-handler.middleware'
+import { sendSuccess } from '../../../../packages/shared/src/types/api-response.types'
+
+export class UserController {
+  getAllUsers = asyncHandler(async (c: Context) => {
+    const users = await userService.getAllUsers()
+    return sendSuccess(c, users, { resource: 'User', action: 'list' })
+  })
+
+  getUserById = asyncHandler(async (c: Context) => {
+    const { id } = c.req.valid<{ id: string }>('param')
+    const user = await userService.getUserById(id)
+    return sendSuccess(c, user, { resource: 'User', action: 'retrieved' })
+  })
+
+  createUser = asyncHandler(async (c: Context) => {
+    const data = c.req.valid<CreateUserInput>('json')
+    const user = await userService.createUser(data)
+    return sendSuccess(c, user, { resource: 'User', action: 'created' })
+  })
+
+  updateUser = asyncHandler(async (c: Context) => {
+    const { id } = c.req.valid<{ id: string }>('param')
+    const data = c.req.valid<UpdateUserInput>('json')
+    const user = await userService.updateUser(id, data)
+    return sendSuccess(c, user, { resource: 'User', action: 'updated' })
+  })
+
+  deleteUser = asyncHandler(async (c: Context) => {
+    const { id } = c.req.valid<{ id: string }>('param')
+    const user = await userService.deleteUser(id)
+    return sendSuccess(c, user, { resource: 'User', action: 'deleted' })
+  })
+}
+
+export const userController = new UserController()

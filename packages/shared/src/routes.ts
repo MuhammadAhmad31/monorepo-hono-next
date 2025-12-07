@@ -21,7 +21,6 @@ export type HonoApiClient = {
 export type ApiRoutes = AllApiRoutes
 
 export type ValidRoute = keyof ApiRoutes
-export type ValidMethod<T extends ValidRoute> = keyof ApiRoutes[T]
 
 // ============================================
 // API Contract Configuration
