@@ -242,7 +242,7 @@ Auto-load more saat scroll ke bawah.
 ### Prerequisites
 
 - Node.js 18+
-- pnpm (recommended) or npm
+- bun (recommended) or npm
 
 ### Installation
 
@@ -252,32 +252,30 @@ git clone <your-repo-url>
 cd hono-nextjs-monorepo
 
 # Install dependencies
-pnpm install
+bun install
 
-# or using npm
-npm install
 ```
 
 ### Development
 
 ```bash
 # Start both API and Web dev servers
-pnpm dev
+bun dev
 
 # or start individually
-pnpm --filter api dev      # API only (http://localhost:3001)
-pnpm --filter web dev      # Web only (http://localhost:3000)
+bun --filter api dev      # API only (http://localhost:3001)
+bun --filter web dev      # Web only (http://localhost:3000)
 ```
 
 ### Build
 
 ```bash
 # Build all packages
-pnpm build
+bun build
 
 # or build individually
-pnpm --filter api build
-pnpm --filter web build
+bun --filter api build
+bun --filter web build
 ```
 
 ### Environment Variables
