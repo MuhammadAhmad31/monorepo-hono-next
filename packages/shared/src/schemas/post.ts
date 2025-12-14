@@ -16,5 +16,5 @@ export const updatePostSchema = z.object({
 }) satisfies z.ZodType<UpdatePostInput>
 
 export const postIdParamSchema = z.object({
-  id: z.string().regex(/^\d+$/, 'ID must be a number'),
+  id: z.string().uuid('Invalid post id'),
 }) satisfies z.ZodType<{ id: string }>

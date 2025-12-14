@@ -1,5 +1,5 @@
 import { prisma } from '../lib/prisma'
-import type { CreateUserInput, UpdateUserInput, User } from 'shared'
+import type { CreateUserInput, UpdateUserInput, User } from 'shared/types'
 import { NotFoundError, ConflictError, BadRequestError } from '../lib/errors'
 
 export class UserService {

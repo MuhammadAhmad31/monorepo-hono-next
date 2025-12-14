@@ -7,7 +7,7 @@ type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 /**
  * Wrapper untuk Hono route yang melakukan validasi contract
  */
-export function createValidatedRoutes() {
+export const createValidatedRoutes = () => {
   const registeredRoutes = new Map<string, Set<HTTPMethod>>()
   const violations: string[] = []
   
@@ -141,7 +141,7 @@ export function createValidatedRoutes() {
 /**
  * Manual validation helper (alternative approach)
  */
-export function validateApiContract(route: string, method: HTTPMethod): void {
+export const validateApiContract = (route: string, method: HTTPMethod): void => {
   const normalizedPath = route
     .replace(/\/+/g, '/')
     .replace(/\/$/, '') 

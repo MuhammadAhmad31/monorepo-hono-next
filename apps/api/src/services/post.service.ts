@@ -1,6 +1,6 @@
 import { prisma } from '../lib/prisma'
 import { NotFoundError, BadRequestError } from '../lib/errors'
-import type { CreatePostInput, Post, UpdatePostInput } from 'shared'
+import type { CreatePostInput, Post, UpdatePostInput } from 'shared/types'
 
 export class PostService {
   async getAllPosts(published?: boolean): Promise<Post[]> {

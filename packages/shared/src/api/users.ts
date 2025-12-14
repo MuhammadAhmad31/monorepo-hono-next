@@ -1,7 +1,7 @@
 import type { HonoApiClient } from '../routes'
 import type { UsersResponse, UserResponse, CreateUserInput, UpdateUserInput } from '../types/index.type'
 
-export function usersApi(client: HonoApiClient) {
+export const usersApi = (client: HonoApiClient) => {
   return {
     getAll: async (): Promise<UsersResponse> => {
       const res = await client.api.users.$get()

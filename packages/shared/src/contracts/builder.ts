@@ -54,7 +54,7 @@ export interface RouteContract<
   bodies: TBodies
 }
 
-export function defineRouteContract<
+export const defineRouteContract = <
   TPath extends string,
   TMethods extends readonly HTTPMethod[],
   TBodies extends Partial<Record<HTTPMethod, any>> = {}
@@ -62,7 +62,7 @@ export function defineRouteContract<
   path: TPath
   methods: TMethods
   bodies?: TBodies
-}): RouteContract<TPath, TMethods, TBodies> {
+}): RouteContract<TPath, TMethods, TBodies> => {
   return {
     path: config.path,
     methods: config.methods,
@@ -169,9 +169,9 @@ export type InferApiRoutes<T extends readonly RouteContract[]> = {
 // Contract Registry
 // ============================================
 
-export function createContractRegistry<T extends readonly RouteContract[]>(
+export const createContractRegistry = <T extends readonly RouteContract[]>(
   contracts: T
-): { [K in T[number] as K['path']]: K['methods'] } {
+): { [K in T[number] as K['path']]: K['methods'] } => {
   return contracts.reduce((acc, contract) => {
     acc[contract.path] = contract.methods
     return acc

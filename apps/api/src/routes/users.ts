@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
-import { createUserSchema, updateUserSchema, userIdParamSchema } from 'shared'
+import { createUserSchema, updateUserSchema, userIdParamSchema } from 'shared/schemas'
 import { createValidatedRoutes } from 'shared'
 import { userController } from '../controllers/user.controller'
 

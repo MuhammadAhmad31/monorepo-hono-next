@@ -12,5 +12,5 @@ export const updateUserSchema = z.object({
 }) satisfies z.ZodType<UpdateUserInput>
 
 export const userIdParamSchema = z.object({
-  id: z.string().regex(/^\d+$/, 'ID must be a number'),
+  id: z.string().regex(/^\d+$/, 'ID must be a string'),
 }) satisfies z.ZodType<{ id: string }>

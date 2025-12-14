@@ -1,6 +1,6 @@
 import type { Context } from 'hono'
 import { AppError } from '../lib/errors'
-import { HttpStatusCode, sendError } from '../../../../packages/shared/src/types/api-response.types'
+import { HttpStatusCode, sendError } from 'shared/types'
 
 export const errorHandler = (err: Error, c: Context) => {
   console.error('Error:', err)

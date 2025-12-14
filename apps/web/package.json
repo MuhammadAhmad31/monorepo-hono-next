@@ -9,14 +9,23 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@tanstack/react-devtools": "^0.8.4",
+    "@tanstack/react-form": "^1.27.3",
+    "@tanstack/react-form-devtools": "^0.2.6",
+    "@tanstack/react-query": "^5.90.12",
+    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.13",
+    "@tanstack/zod-form-adapter": "^0.42.1",
     "hono": "^4.10.7",
-    "next": "16.0.7",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "next": "^16.0.10",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "shared": "workspace:*"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@tanstack/eslint-plugin-query": "^5.91.2",
+    "@tanstack/react-query-devtools": "^5.91.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

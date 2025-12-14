@@ -1,5 +1,3 @@
-// shared/src/types/api-response.types.ts
-
 import type { Context } from 'hono'
 
 export enum HttpStatusCode {
@@ -62,10 +60,10 @@ type ListAction = 'list'
  * @example generateSuccessMessage('User', 'created') => "User created successfully"
  * @example generateSuccessMessage('Post', 'retrieved') => "Post retrieved successfully"
  */
-export function generateSuccessMessage(
+export const generateSuccessMessage = (
   resource: string, 
   action: CrudAction | ListAction
-): string {
+): string => {
   if (action === 'list') {
     return `${resource}s retrieved successfully`
   }
@@ -77,17 +75,17 @@ export function generateSuccessMessage(
  * @example generateErrorMessage('User', 'not found') => "User not found"
  * @example generateErrorMessage('Email', 'already exists') => "Email already exists"
  */
-export function generateErrorMessage(
+export const generateErrorMessage = (
   resource: string,
   issue: string
-): string {
+): string => {
   return `${resource} ${issue}`
 }
 
 /**
  * Send success response with auto-generated message
  */
-export function sendSuccess<T>(
+export const sendSuccess = <T>(
   c: Context,
   data: T,
   options: {
@@ -97,7 +95,7 @@ export function sendSuccess<T>(
     meta?: SuccessResponse<T>['meta']
     customMessage?: string
   }
-) {
+) => {
   const { resource, action, statusCode, meta, customMessage } = options
   
   const response: SuccessResponse<T> = {
@@ -115,7 +113,7 @@ export function sendSuccess<T>(
 /**
  * Send error response with auto-generated message
  */
-export function sendError(
+export const sendError = (
   c: Context,
   options: {
     resource?: string
@@ -124,7 +122,7 @@ export function sendError(
     customMessage?: string
     errors?: Array<{ field: string; message: string }>
   }
-) {
+) => {
   const { resource, issue, statusCode = HttpStatusCode.INTERNAL_SERVER_ERROR, customMessage, errors } = options
   
   const message = customMessage || (resource && issue ? generateErrorMessage(resource, issue) : 'An error occurred')
@@ -136,13 +134,13 @@ export function sendError(
     ...(errors && { errors })
   }
   
-  return c.json(response, )
+  return c.json(response, statusCode as any)
 }
 
 /**
  * Send paginated response with auto-generated message
  */
-export function sendPaginated<T>(
+export const sendPaginated = <T>(
   c: Context,
   data: T[],
   options: {
@@ -152,7 +150,7 @@ export function sendPaginated<T>(
     total: number
     customMessage?: string
   }
-) {
+) => {
   const { resource, page, limit, total, customMessage } = options
   
   const totalPages = Math.ceil(total / limit)
@@ -223,7 +221,7 @@ export const ErrorResponses = {
 /**
  * Extract pagination params from query
  */
-export function getPaginationParams(c: Context) {
+export const getPaginationParams = (c: Context) => {
   const page = parseInt(c.req.query('page') || '1')
   const limit = parseInt(c.req.query('limit') || '10')
   

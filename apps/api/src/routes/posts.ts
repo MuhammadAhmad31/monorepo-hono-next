@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
-import { createPostSchema, updatePostSchema, postIdParamSchema } from 'shared'
 import { createValidatedRoutes } from 'shared'
 import { postController } from '../controllers/post.controller'
+import { createPostSchema, postIdParamSchema, updatePostSchema } from 'shared/schemas'
 
 const postRoutes = new Hono()
 

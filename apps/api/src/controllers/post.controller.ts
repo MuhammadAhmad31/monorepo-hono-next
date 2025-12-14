@@ -1,8 +1,7 @@
 import type { Context } from 'hono'
-import type { CreatePostInput, UpdatePostInput } from 'shared'
+import { sendSuccess, type CreatePostInput, type UpdatePostInput } from 'shared/types'
 import { postService } from '../services/post.service'
 import { asyncHandler } from '../middlewares/error-handler.middleware'
-import { sendSuccess } from '../../../../packages/shared/src/types/api-response.types'
 
 export class PostController {
   getAllPosts = asyncHandler(async (c: Context) => {
@@ -20,7 +19,7 @@ export class PostController {
   })
 
   getPostsByUser = asyncHandler(async (c: Context) => {
-    const { userId } = c.req.param()
+    const { userId } = c.req.valid<{ userId: string }>('param')
     const posts = await postService.getPostsByUser(userId)
     return sendSuccess(c, posts, { resource: 'Post', action: 'list' })
   })

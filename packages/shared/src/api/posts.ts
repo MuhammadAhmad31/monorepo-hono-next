@@ -1,7 +1,7 @@
 import type { HonoApiClient } from '../routes'
 import type { PostsResponse, PostResponse, CreatePostInput, UpdatePostInput } from '../types/index.type'
 
-export function postsApi(client: HonoApiClient) {
+export const postsApi = (client: HonoApiClient) => {
   return {
     getAll: async (): Promise<PostsResponse> => {
       const res = await client.api.posts.$get()
